@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useWebSraper } from '../composables/useWebScraper.ts'
+import { useWebScraper } from '../composables/useWebScraper.ts'
 
-const { newWebScraper, addNewWebScraper } = useWebSraper()
+const { newWebScraper, addNewWebScraper } = useWebScraper()
 
 //frequency is based off of WebScraper.updateFrequency scr/types/webScraper.ts
 const frequency = ['hourly', 'daily', 'weekly', 'monthly', 'yearly']
