@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useWebSraper } from '../composables/useWebScraper.ts'
+import { useWebScraper } from '../composables/useWebScraper.ts'
 
-const { newWebScraper, addNewWebScraper } = useWebSraper()
+const { newWebScraper, addNewWebScraper } = useWebScraper()
 
 //frequency is based off of WebScraper.updateFrequency scr/types/webScraper.ts
 const frequency = ['hourly', 'daily', 'weekly', 'monthly', 'yearly']
@@ -21,7 +21,15 @@ function submitParameters() {
     addNewWebScraper(newWebScraper.value)
   }
 }
+//Test API code
+import { onMounted } from 'vue'
+import { testAPI } from '../services/api.ts'
 
+onMounted(async () => {
+  const data = await testAPI()
+
+  console.log(data)
+})
 </script>
 
 <template>
@@ -74,7 +82,7 @@ function submitParameters() {
             ? 'bg-green-200 text-green-500 border-green-300'
             : 'bg-red-200 text-red-500 border-red-300'
         ]"
-        >Log In
+        >Run Querry
       </button>
 
     </form>
