@@ -4,7 +4,12 @@ import { ref } from 'vue'
 import type { WebScraper } from '../types/webScraper.ts'
 import { getAllWebScrapers, saveWebScraper } from '../services/webScraperServices.ts'
 
-export const webScraperList = await getAllWebScrapers()
+const webScraperList = ref<WebScraper[]>([])
+
+// expose the loading promise itself
+const ready = getAllWebScrapers().then(data => {
+  webScraperList.value = data
+})
 
 export function useWebScraper() {
   const newWebScraper = ref<WebScraper>({
@@ -21,6 +26,7 @@ export function useWebScraper() {
   return {
     webScraperList,
     newWebScraper,
-    addNewWebScraper
+    addNewWebScraper,
+    ready
   }
 }
