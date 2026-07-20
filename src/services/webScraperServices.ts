@@ -12,7 +12,7 @@ export async function getAllWebScrapers() {
 
 //Save the newWebScrapers to the database
 export async function saveWebScraper(webScraper: WebScraper) {
-  const response = await fetch("api/webscrapers", {
+  const response = await fetch("/api/webscrapers", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
