@@ -40,7 +40,7 @@ export async function loadWebsiteFullContent(url: string): Promise<string> {
 }
 
 //Delete web scraper
-export async function deleterWebScraper(id: number) {
+export async function deleteWebScraper(id: number) {
   const response = await fetch(`/api/webscrapers?id=${id}`, {
     method: "DELETE"
   })
