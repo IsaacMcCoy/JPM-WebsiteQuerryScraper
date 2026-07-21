@@ -24,7 +24,7 @@ onMounted(async () => {
   }
 })
 
-function splitByKeyword(text: string, keyword: string) {
+function colorKeyword(text: string, keyword: string) {
   if (!keyword) return [{ text, match: false }]
   const parts = []
   const lower = text.toLowerCase()
@@ -83,7 +83,7 @@ function splitByKeyword(text: string, keyword: string) {
       
       <div class="w-full h-full bg-white border border-black p-2 text-center">
   <span
-    v-for="(part, i) in splitByKeyword(result.reference, webScraperList[result.websiteIndex].keyword)"
+    v-for="(part, i) in colorKeyword(result.reference, webScraperList[result.websiteIndex].keyword)"
     :key="i"
     :class="part.match ? 'text-green-600 font-semibold' : ''"
   >{{ part.text }}</span>
