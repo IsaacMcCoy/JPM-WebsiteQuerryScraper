@@ -30,39 +30,44 @@ onMounted(async () => {
 </script>
 
 <template>
-  <form @submit.prevent="submitParameters()" class="rounded-t-md flex flex-col bg-white gap-2">
-    <div class="grid grid-cols-[auto_auto] place-items-center m-10 mx-1 border border-gray-300">
+  <form @submit.prevent="submitParameters()" class="rounded-t-md flex flex-col bg-white p-2">
+    
+    <div class="grid grid-cols-[auto_auto] place-items-center m-2 mt-5 border border-gray-300">
+      
       <div class="border-b border-r border-gray-300 w-full px-2 pt-2">Website</div>
       <div class="border-b border-l border-gray-300 w-full px-2 pt-2">Keyword</div>
+      
       <div
-    v-for="scraper in scraperList"
-    :key="scraper.id"
-    class="contents"
-    >
-      <div
-        class="border-b border-r border-gray-300 w-full px-2 pt-2"
-        @click="selected === scraper ? selected = null : selected = scraper"
-        :class="{'bg-blue-200': selected === scraper}"
+        v-for="scraper in scraperList"
+        :key="scraper.id"
+        class="contents"
       >
-        <a @click.stop :href="scraper.url" target="_blank" class="underline hover:text-blue-400 hover:cursor-pointer">
-          {{ scraper.url }}
-        </a>
+        <div
+          class="border-b border-r border-gray-300 w-full px-2 pt-2"
+          @click="selected === scraper ? selected = null : selected = scraper"
+          :class="{'bg-blue-200': selected === scraper}"
+        >
+          <a @click.stop :href="scraper.url" target="_blank" class="underline hover:text-blue-400 hover:cursor-pointer">
+            {{ scraper.url }}
+          </a>
+        </div>
+        
+        <div
+          class="border-b border-l border-gray-300 w-full px-2 pt-2"
+          @click="selected === scraper ? selected = null : selected = scraper"
+          :class="{'bg-blue-200': selected === scraper}"
+        >
+          {{ scraper.keyword }}
+        </div>
       </div>
-      <div
-        class="border-b border-l border-gray-300 w-full px-2 pt-2"
-        @click="selected === scraper ? selected = null : selected = scraper"
-        :class="{'bg-blue-200': selected === scraper}"
-      >
-        {{ scraper.keyword }}
-    </div>
-    </div>
     </div>
       
     <button 
       type="submit"
-      class="m-1 mt-2 mx-6 max-w-[330px] p-1 rounded-md border border-2 bg-red-200 text-red-500 border-red-300"
+      class="mb-6 mt-2 mx-6 max-w-[330px] p-1 rounded-md border border-2 bg-red-200 text-red-500 border-red-300"
     >
       Delete Web Scraper
     </button>
+  
   </form>
 </template>
